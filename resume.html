@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olivia Tran — Résumé</title>
+<meta name="description" content="One-page résumé for Olivia Tran.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+body{margin:0}
+a{color:#8C2A4A}a:hover{color:#5E1A31}
+li::marker{color:#6E9A54}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:2px;align-items:baseline}
+.row .r{text-align:right;font-size:14px;color:#5C574E;white-space:nowrap}
+@media (max-width:560px){.row{grid-template-columns:1fr}.row .r{text-align:left}}
+.paper{background:linear-gradient(rgba(246,243,236,.62),rgba(246,243,236,.62)),url(assets/textures/paper.jpg) top center/1300px auto repeat,#F4F0E8}
+</style>
+<style>html,body{margin:0;padding:0}html{background:#F4F0E8}</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="vendor/htm-preact.umd.js"></script>
+<script>
+(function () {
+var html = htmPreact.html, render = htmPreact.render;
+class DCLogic extends htmPreact.Component {
+  render() { return template(this.renderVals() || {}); }
+}
+function template(v) {
+  var { jobs } = v;
+  return html`<div class="paper" style="width: 100%; min-height: 100vh; box-sizing: border-box; padding: 56px 6% 80px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1A1A18">
+<main style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px">
+
+<header style="display: flex; flex-direction: column; gap: 14px">
+<a href="index.html" style="align-self: flex-start; min-height: 32px; display: inline-flex; align-items: center; font-size: 14px; color: #5C574E">← back to the site</a>
+<h1 style="margin: 0"><img src="assets/handwriting/name-bubble-burgundy.png" alt="Olivia Tran" style="display: block; width: 100%; max-width: 360px; height: auto; transform: rotate(-1.5deg)" /></h1>
+<p style="margin: 0; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 15px">
+<a href="mailto:ot.olivia.tran@gmail.com">ot.olivia.tran@gmail.com</a>
+<a href="https://www.linkedin.com/in/ot-olivia-tran/">LinkedIn</a>
+<a href="https://github.com/kyolivia">GitHub</a>
+<a href="assets/olivia-tran-resume.pdf" download="Olivia_Tran_Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+<span style="color: #5C574E">Providence, RI</span>
+</p>
+</header>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #3E6A2E; border-bottom: 1.5px solid #C9D2B4; padding-bottom: 8px">Education</h2>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div class="row">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600">Brown University</h3><span class="r">Expected May 2029</span>
+<span style="font-size: 15px">B.S. Computer Science</span><span class="r">Providence, RI</span>
+</div>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #5C574E"><span style="color: #3E6A2E">Coursework:</span> Computer Systems, Data Structures and Algorithms, Discrete Structures, Probability, Multivariable Calculus, Linear Algebra</p>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 22px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #3E6A2E; border-bottom: 1.5px solid #C9D2B4; padding-bottom: 8px">Experience</h2>
+${(jobs || []).map((j) => html`
+<article style="display: flex; flex-direction: column; gap: 8px">
+<div class="row">
+<h3 style="margin: 0; font-size: 17px; font-weight: 600">${j.org}</h3><span class="r">${j.dates}</span>
+<span style="font-size: 15px; font-style: italic; color: #3E6A2E">${j.role}</span><span class="r">${j.loc}</span>
+</div>
+<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; line-height: 1.55">
+${(j.bullets || []).map((b) => html`<li>${b}</li>`)}
+</ul>
+</article>
+`)}
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #3E6A2E; border-bottom: 1.5px solid #C9D2B4; padding-bottom: 8px">Publications</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.55">Sahhar M, <strong style="font-weight: 600">Tran O</strong>, Rangan S, et al. “Spine Care Discourse on Reddit: A Longitudinal Analysis of Peer Advice and Sentiment From 2011 to 2024.” <em>The Spine Journal</em>. Under review.</p>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #3E6A2E; border-bottom: 1.5px solid #C9D2B4; padding-bottom: 8px">Activities</h2>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<article style="display: flex; flex-direction: column; gap: 6px">
+<div class="row"><h3 style="margin: 0; font-size: 17px; font-weight: 600">The Artemis Program</h3><span class="r">Sep 2025 – present</span><span style="font-size: 15px; font-style: italic; color: #3E6A2E">Communications Director</span><span class="r"></span></div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55"><li>Teach CS fundamentals to 60+ students in grades 5–8.</li></ul>
+</article>
+<article style="display: flex; flex-direction: column; gap: 6px">
+<div class="row"><h3 style="margin: 0; font-size: 17px; font-weight: 600">Meiklejohn Peer Advising Program</h3><span class="r">Aug 2026 – present</span><span style="font-size: 15px; font-style: italic; color: #3E6A2E">Peer Advisor</span><span class="r"></span></div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55"><li>Advise first-year students on academics and settling in at Brown, alongside a faculty advisor.</li></ul>
+</article>
+<article style="display: flex; flex-direction: column; gap: 6px">
+<div class="row"><h3 style="margin: 0; font-size: 17px; font-weight: 600">Brown AI Safety Team</h3><span class="r">Oct 2026 – present</span><span style="font-size: 15px; font-style: italic; color: #3E6A2E">Technical Fellow</span><span class="r"></span></div>
+<ul style="margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.55"><li>Study the architecture and training of LLMs, including interpretability, evaluations and external safeguards.</li></ul>
+</article>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #3E6A2E; border-bottom: 1.5px solid #C9D2B4; padding-bottom: 8px">Skills</h2>
+<div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 6px 16px; font-size: 15px; line-height: 1.55">
+<span style="color: #3E6A2E">Languages</span><span>Python, Go, Java, C++, C, JavaScript, HTML/CSS</span>
+<span style="color: #3E6A2E">Tools</span><span>Kubernetes, Helm, AWS, MNE-Python, React, Node.js</span>
+<span style="color: #3E6A2E">Spoken</span><span>English (fluent), Vietnamese (fluent in speaking and listening)</span>
+</div>
+</section>
+
+</main>
+</div>`;
+}
+class Component extends DCLogic {
+renderVals() {
+return {
+jobs: [
+{ role: 'Software Development Engineer Intern', org: 'Amazon Web Services', dates: 'May – Aug 2026', loc: 'Santa Clara, CA', bullets: ['Shipped a logging feature for the SageMaker AI HyperPod Inference Operator, a Kubernetes controller that deploys and autoscales ML inference endpoints on GPU clusters.', 'Cut ingestion 22% on a test cluster through the new logging feature, using Go, Helm and AWS CloudWatch.', 'Deployed autoscaling ML inference endpoints with vLLM and KEDA on HyperPod GPU nodes, testing JumpStart and Hugging Face models end to end.'] },
+{ role: 'Undergraduate Research Assistant', org: 'Laboratory for Cognitive and Perceptual Learning', dates: 'Nov 2025 – present', loc: 'Providence, RI', bullets: ['Preprocess EEG data in MNE-Python, using ERP analysis to assess signal quality across recording sessions.', 'Run participants through EEG and behavioral protocols, including fitting EEG caps and placing electrodes.'] },
+{ role: 'Research', org: 'Brown Orthopedic Spine Lab', dates: 'Oct 2025 – May 2026', loc: 'Providence, RI', bullets: ['Built an automated text classification pipeline using LLM-based inference (ChatGPT-5 API), replacing manual annotation and improving labeling consistency across 100K posts.'] },
+{ role: 'Founder', org: 'Precision Web Studios', dates: 'Jun 2022 – Jun 2025', loc: 'Hudson Valley, NY', bullets: ['Built and launched 20 client websites end to end (intake, requirements, development, deployment and maintenance) with WordPress, HTML and CSS.', 'Led the ownership handoff before college, transferring full control of hosting and domains to every client.'] }
+]
+};
+}
+}
+render(html`<${Component} ...${{}} />`, document.getElementById('app'));
+})();
+</script>
+</body>
+</html>

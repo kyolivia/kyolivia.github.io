@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olivia Tran</title>
+<meta name="description" content="Olivia Tran — computer science at Brown. About, experience and contact.">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+body{margin:0}
+a{color:inherit}a:hover{opacity:.75}
+@keyframes flipNext{from{transform:rotateY(0deg)}to{transform:rotateY(-180deg)}}
+@keyframes flipPrev{from{transform:rotateY(0deg)}to{transform:rotateY(180deg)}}
+@keyframes insertIn{from{transform:translateY(80%) rotate(-5deg);opacity:0}to{transform:translateY(0) rotate(-1deg);opacity:1}}
+@keyframes insertOut{from{transform:translateY(0) rotate(-1deg);opacity:1}to{transform:translateY(80%) rotate(-5deg);opacity:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+@keyframes popUp{0%{transform:rotateX(89deg)}70%{transform:rotateX(-6deg)}100%{transform:rotateX(0deg)}}
+@keyframes shadowIn{from{opacity:0;transform:scaleX(.3)}to{opacity:1;transform:scaleX(1)}}
+@keyframes swapIn{from{opacity:0;transform:translateX(24px) rotate(1deg)}to{opacity:1;transform:translateX(0) rotate(0)}}
+@keyframes punchIn{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes chadFall{0%{transform:translateY(0) rotate(0);opacity:1}85%{opacity:1}100%{transform:translateY(var(--fall,260px)) rotate(200deg);opacity:0}}
+.chad{--fall:calc((1 - var(--fy)) * 672px - 34px)}
+.cv-pet{position:absolute;bottom:0;left:calc(var(--fx) * 41.6% - 34px);width:68px;z-index:6;transition:left .5s cubic-bezier(.3,.7,.3,1)}
+.pet-btn{display:block;border:0;padding:0;margin:0;background:transparent;cursor:pointer;width:68px}
+.pet-img{display:block;width:68px;height:auto;transform-origin:50% 100%;pointer-events:none}
+.pet-z{position:absolute;right:-6px;top:42%;font:600 13px/1 'Helvetica Neue',Helvetica,Arial,sans-serif;color:#5C574E;animation:petZ 2.4s ease-in-out infinite;pointer-events:none}
+.pet-z.b{animation-delay:1.2s;right:-14px}
+@keyframes petZ{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(10px,-26px)}}
+@keyframes petHopA{0%,100%{transform:translateY(0) scale(1,1)}20%{transform:translateY(0) scale(1.08,.9)}50%{transform:translateY(-22px) scale(.95,1.06)}82%{transform:translateY(0) scale(1.07,.93)}}
+@keyframes petHopB{0%,100%{transform:translateY(0) scale(1,1)}20%{transform:translateY(0) scale(1.08,.9)}50%{transform:translateY(-22px) scale(.95,1.06)}82%{transform:translateY(0) scale(1.07,.93)}}
+@keyframes petWigA{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}45%{transform:rotate(8deg)}70%{transform:rotate(-5deg)}88%{transform:rotate(2deg)}}
+@keyframes petWigB{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}45%{transform:rotate(8deg)}70%{transform:rotate(-5deg)}88%{transform:rotate(2deg)}}
+@keyframes petBreathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.03,.96)}}
+@keyframes petGrow{0%{transform:scale(1)}40%{transform:scale(1.12,1.12)}100%{transform:scale(1)}}
+.pet-side{position:absolute;right:-48px;bottom:0;z-index:6;width:68px}
+@media (max-width:760px){.pet-side{right:10px}}
+.pet-found{position:absolute;right:22%;width:68px;touch-action:none;cursor:grab}
+.pet-found:active{cursor:grabbing}
+.pet-found .pet-btn{cursor:inherit}
+.pet-popin{animation:petPop .6s .45s cubic-bezier(.3,1.5,.5,1) both}
+.pet-shake{transform-origin:50% 100%}
+@keyframes petShake{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-9deg)}92%{transform:rotate(8deg)}95%{transform:rotate(-5deg)}98%{transform:rotate(2deg)}}
+@keyframes petPop{from{transform:translateY(70px)}to{transform:translateY(0)}}
+.pgL{background:url(assets/textures/paper.jpg) center/cover no-repeat,#F7F4EE;box-shadow:0 1px 2px rgba(60,45,30,.12);animation:dealIn .55s cubic-bezier(.3,.8,.4,1) both}
+.pgR{background:url(assets/textures/paper.jpg) center/cover no-repeat,#F7F4EE;box-shadow:0 1px 2px rgba(60,45,30,.12);animation:dealIn .55s .12s cubic-bezier(.3,.8,.4,1) both}
+
+
+@keyframes dealIn{0%{opacity:0;translate:0 90px;rotate:3deg}70%{opacity:1;translate:0 -4px;rotate:-.4deg}100%{opacity:1;translate:0 0;rotate:0deg}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.endFront{animation:dealIn .55s cubic-bezier(.3,.8,.4,1) both;background:url(assets/photos/title-leaf.jpg) center/cover no-repeat,#EDE9DE}
+.pgCard{background:url(assets/textures/paper.jpg) center/cover no-repeat,#F7F4EE}
+
+.tabs{position:relative;display:flex;flex-wrap:wrap;gap:6px 26px;margin:0 0 22px 4px}
+.tab{display:flex;align-items:center;height:44px;padding:0 2px;background:transparent !important;border-bottom:2px solid transparent !important;border-radius:0 !important;transform:none !important;transition:border-color .2s}
+.tab[aria-current="page"]{border-bottom-color:#8C2A4A !important}
+.tab img{filter:none !important;transform:none !important;height:24px !important}
+.tab span{transform:none !important}
+.tab:hover{border-bottom-color:rgba(140,42,74,.4) !important}
+.tabrot{display:block;transform:rotate(90deg);white-space:nowrap}
+.tape{clip-path:polygon(2% 0,98% 6%,100% 22%,96% 40%,100% 58%,97% 78%,99% 100%,1% 95%,4% 76%,0 57%,3% 38%,0 18%)}
+.deskwood{background:radial-gradient(ellipse 80% 75% at 50% 50%, rgba(28,20,15,0) 50%, rgba(28,20,15,.18) 100%),linear-gradient(rgba(214,198,180,.34),rgba(214,198,180,.34)),url(assets/textures/desk-walnut.jpg) center/cover no-repeat,#7A4E38}
+.deskgray{background:radial-gradient(ellipse 80% 75% at 50% 50%, rgba(28,20,15,0) 50%, rgba(28,20,15,.18) 100%),linear-gradient(rgba(206,200,194,.34),rgba(206,200,194,.34)),url(assets/textures/desk-wood-gray.jpg) center/cover no-repeat,#5E544C}
+.deskmid{background:radial-gradient(ellipse 80% 75% at 50% 50%, rgba(28,20,15,0) 50%, rgba(28,20,15,.18) 100%),linear-gradient(rgba(214,198,180,.34),rgba(214,198,180,.34)),url(assets/textures/desk-wood-mid.jpg) center/cover no-repeat,#6E5444}
+.openbtn{text-decoration:underline;text-underline-offset:4px}
+.openbtn:hover{opacity:.7}
+.lift{transition:transform .3s cubic-bezier(.2,.8,.2,1),filter .3s}
+.lift:hover{transform:translateY(-6px) rotate(-2deg) scale(1.03);filter:drop-shadow(0 10px 10px rgba(0,0,0,.25))}
+.curl{transition:width .25s ease,height .25s ease}
+.corner:hover .curl,.corner:focus-visible .curl{width:64px;height:64px}
+.stain{transition:transform 1.8s cubic-bezier(.2,.7,.2,1) .35s,opacity 1.8s ease .35s}
+@media (max-width:820px){.stainwrap{display:none}.cover{display:flex !important;flex-direction:column;gap:22px}.cover>*{transform:none !important;margin:0 !important}.cv-photo{height:420px}.cv-sticky{align-self:flex-start;width:auto;margin:0 !important}.cv-pet{bottom:auto;top:316px;left:calc(var(--fx) * 100% - 34px)}.chad{--fall:calc((1 - var(--fy)) * 420px - 34px)}}
+@media (hover:hover) and (pointer:fine){.pencil-on,.pencil-on *{cursor:none !important}}
+@media (max-width:820px){.tabs{position:static;flex-direction:row;flex-wrap:wrap;margin-bottom:10px}.tab{width:auto;height:44px;padding:0 16px}.tabrot{transform:none !important}}
+@media (prefers-reduced-motion: reduce){.pet-popin,.pet-shake{animation:none !important}.pet-img,.pet-z{animation:none !important}.cv-pet{transition:none}.flip{display:none}.tab,.lift,.curl,.stain{transition:none}.pop,.popshadow{animation:none !important}}
+</style>
+<style>html,body{margin:0;padding:0}html{background:#CFC5B7}</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="vendor/htm-preact.umd.js"></script>
+<script>
+(function () {
+var html = htmPreact.html, render = htmPreact.render;
+class DCLogic extends htmPreact.Component {
+  render() { return template(this.renderVals() || {}); }
+}
+function template(v) {
+  var { aboutPhotos, backHint, backHoles, c, closeProj, contactRows, cornerClickL, cornerClickR, cornerDownL, cornerDownR, cornerMove, cornerUp, d, deskBg, endHoles, experiences, fadeAnim, flipDur, flipNext, flipPrev, insertAnim, markerY, nameImg, nameMax, onDown, onLeave, onMove, onUp, petAnim, petAsleep, petDown, petFoundBottom, petFoundLabel, petFoundZ, petLabel, petMove, petShakeAnim, petSrc, petTap, petTapFound, petUp, petX, punch, refBook, refDragL, refDragR, refPetFound, refRoot, refTrail, rootClass, s0, s1, s2, s3, showCornerL, showCornerR, showInsert, tabs } = v;
+  return html`<div ref="${refRoot}" class="${rootClass}" onMouseMove="${onMove}" onMouseLeave="${onLeave}" onMouseDown="${onDown}" onMouseUp="${onUp}" style="position: relative; width: 100%; min-height: 960px; box-sizing: border-box; padding: 56px 6% 56px 4%; background: ${deskBg}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: ${c.ink}; overflow: hidden">
+<svg aria-hidden="true" style="display: none"><filter id="grainJ"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grainJ)"></rect></svg>
+
+
+
+<div ref="${refBook}" style="position: relative; max-width: 1180px; margin: 0 auto">
+
+<nav class="tabs" aria-label="Jump to section">
+${(tabs || []).map((t) => html`
+<button type="button" class="tab" onClick="${t.go}" aria-current="${t.current}" style="border: 0; cursor: pointer; padding: 14px 0; border-radius: 2px; background: ${t.bg}; color: ${t.fg}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; transform: ${t.shift}">${(t.hasImg) ? html`<img class="tabrot" src="${t.img}" alt="${t.label}" style="height: 20px; width: auto; filter: ${t.imgFilter}" />` : null}${(t.noImg) ? html`<span class="tabrot" style="font-size: 15px">${t.label}</span>` : null}</button>
+`)}
+</nav>
+
+<div style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; min-height: 700px">
+
+
+${(s0) ? html`
+<div class="cover" style="grid-column: 1 / -1; position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(8, 84px)">
+
+<div class="endFront cv-photo" style="position: relative; overflow: hidden; grid-column: 1 / 6; grid-row: 1 / 9; transform: rotate(-2deg); z-index: 1; box-shadow: 0 1px 3px rgba(60,45,30,0.2)">
+<button type="button" aria-label="Punch a hole in the photo" onClick="${punch}" style="position: absolute; inset: 0; border: 0; padding: 0; background: transparent; cursor: crosshair"></button>
+${(endHoles || []).map((h) => html`
+<span aria-hidden="true" class="chad" style="--fy: ${h.fy}; position: absolute; left: ${h.x}%; top: ${h.y}%; width: 22px; height: 22px; margin: -11px 0 0 -11px; pointer-events: none">
+<span style="position: absolute; inset: 0; border-radius: 50%; background: #CFC5B7; box-shadow: inset 0 2px 3px rgba(0,0,0,0.35); animation: punchIn 0.18s ease-out both"></span>
+<span style="position: absolute; inset: 0; border-radius: 50%; background: ${h.chad}; animation: chadFall 0.8s ease-in forwards"></span>
+</span>
+`)}
+</div>
+
+
+<div class="cv-pet" style="--fx: ${petX}">
+<button type="button" class="pet-btn" onClick="${petTap}" aria-label="${petLabel}"><img class="pet-img" src="${petSrc}" alt="" style="animation: ${petAnim}" /></button>
+${(petAsleep) ? html`<span class="pet-z" aria-hidden="true">z</span><span class="pet-z b" aria-hidden="true">z</span>` : null}
+</div>
+<img class="cv-note" src="assets/handwriting/go-on-punch-a-hole.png" alt="go on, punch a hole" style="grid-column: 2 / 6; grid-row: 1; align-self: start; justify-self: start; margin: 26px 0 0 0; height: 24px; width: auto; z-index: 4; pointer-events: none; transform: rotate(-3deg)" />
+
+<h1 class="cv-name" style="margin: 0; grid-column: 5 / 12; grid-row: 1 / 3; align-self: center; justify-self: start; z-index: 3"><img src="${nameImg}" alt="Olivia Tran" style="display: block; width: 100%; max-width: ${nameMax}px; height: auto; transform: rotate(-1.5deg)" /></h1>
+
+<div class="pgR cv-paper" style="grid-column: 6 / 12; grid-row: 3 / 7; z-index: 2; padding: 34px 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px; transform: rotate(0.8deg)">
+<p style="margin: 0; font-size: 17px; line-height: 1.6; max-width: 460px">Hey! I’m a second-year at Brown studying computer science. I’m interested in natural language processing and neural networks. I was at Amazon Web Services (AWS) last summer, and right now I’m building a digital calling card with a friend!</p>
+<a href="resume.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; color: ${c.ink}; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px">or read the one-page résumé</a>
+</div>
+
+<div class="cv-label" style="position: relative; grid-column: 3 / 7; grid-row: 7 / 9; align-self: center; justify-self: end; z-index: 4; background: #FBF9F3; padding: 18px 24px 20px; display: flex; flex-direction: column; gap: 6px; transform: rotate(-3deg); box-shadow: 1px 2px 2px rgba(40,30,20,0.16), 5px 9px 16px -6px rgba(40,30,20,0.22)">
+<span aria-hidden="true" class="tape" style="position: absolute; top: -10px; left: 38%; width: 74px; height: 20px; background: linear-gradient(90deg, rgba(214,198,158,.72), rgba(230,218,184,.88) 40%, rgba(214,198,158,.72)); transform: rotate(4deg)"></span>
+<img src="assets/handwriting/this-journal-belongs-to.png" alt="this journal belongs to" style="display: block; height: 20px; width: auto; align-self: flex-start; flex: none" />
+<img src="assets/handwriting/olivia-tran-label.png" alt="Olivia Tran" style="display: block; height: 30px; width: auto; align-self: flex-start; flex: none; margin-top: 4px" />
+</div>
+
+<div class="cv-sticky" style="position: relative; grid-column: 10 / 13; grid-row: 2 / 5; align-self: start; justify-self: end; margin: 30px -90px 0 0; z-index: 5; width: 200px; box-sizing: border-box; padding: 18px 18px 22px; background: #DCE0CB; transform: rotate(4deg); box-shadow: 0 1px 1px rgba(50,55,40,0.12), 0 12px 14px -10px rgba(50,55,40,0.32); display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.45; color: #1A1A18">
+<span style="font-weight: 600; color: #8C2A4A">currently:</span>
+<span>creating a card project</span>
+<span>practicing a new koto piece</span>
+<span>learning how to make kokedamas</span>
+</div>
+
+<div class="cv-find" style="grid-column: 8 / 12; grid-row: 7 / 9; align-self: center; z-index: 3; display: flex; flex-direction: column; gap: 6px; padding-left: 10px">
+<img src="assets/handwriting/find-me.png" alt="find me!" style="display: block; height: 30px; width: auto; align-self: flex-start; flex: none; transform: rotate(-2deg)" />
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px">
+${(contactRows || []).map((t) => html`
+<a href="${t.href}" aria-label="${t.label}" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; transform: rotate(${t.tilt}deg)"><img src="${t.icon}" alt="${t.label}" style="display: block; height: ${t.iconH}px; width: auto; flex: none" /></a>
+`)}
+</div>
+</div>
+
+</div>
+` : null}
+
+
+${(s1) ? html`
+<div class="pgL" style="position: relative; z-index: 3; padding: 44px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px; border-radius: 2px">
+<div class="pet-side">
+<button type="button" class="pet-btn" onClick="${petTap}" aria-label="${petLabel}"><img class="pet-img" src="${petSrc}" alt="" style="animation: ${petAnim}" /></button>
+${(petAsleep) ? html`<span class="pet-z" aria-hidden="true">z</span><span class="pet-z b" aria-hidden="true">z</span>` : null}
+</div>
+<div style="position: relative; z-index: 3; align-self: center; width: 100%; max-width: 330px; margin: auto 0; transform: rotate(-2.5deg)">
+<div class="pop" style="position: relative; background: ${c.mount}; padding: 22px; box-sizing: border-box; box-shadow: 1px 2px 2px rgba(40,30,20,0.16), 5px 9px 16px -6px rgba(40,30,20,0.22)">
+<img src="assets/photos/portrait-arcade-bus.jpg" alt="Olivia smiling in the driver’s seat of an arcade bus" style="display: block; width: 100%; aspect-ratio: 3 / 4; height: auto; object-fit: cover" />
+<img src="assets/handwriting/hi-its-me.png" alt="hi, it’s me!" style="display: block; height: 24px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; max-width: 100%; object-fit: contain; margin: 12px auto 0;; align-self: flex-start; flex: none" />
+<div aria-hidden="true" class="tape" style="position: absolute; top: -12px; left: 36%; width: 90px; height: 24px; background: linear-gradient(90deg, rgba(214,198,158,.72), rgba(230,218,184,.88) 40%, rgba(214,198,158,.72)); transform: rotate(-4deg)"></div></div>
+</div>
+</div>
+<div class="pgR" style="position: relative; padding: 44px 52px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px; border-radius: 2px">
+<h2 style="margin: 0"><img src="assets/handwriting/about-me.png" alt="about me" style="display: block; height: 36px; width: auto; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.65">I grew up in a small town in the Hudson Valley, New York. I started out making Roblox games in elementary school, then Unity games in middle school, then websites for local businesses in high school. Now I study computer science at Brown!</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.65">At Brown, I’m building a digital calling card with a friend: tap phones to exchange, and the back of the card shows what the two of you have in common. I also help teach students how to code with The Artemis Program.</p>
+<span style="font-size: 14px; font-weight: 600; color: #8C2A4A; margin-bottom: -8px">my hobbies:</span>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 6px">
+${(aboutPhotos || []).map((ph) => html`
+<div style="position: relative; transform: rotate(${ph.tilt}deg)">
+<button type="button" class="lift" onClick="${ph.flip}" aria-label="Flip the photo over" aria-pressed="${ph.flippedStr}" style="position: relative; display: block; width: 100%; padding: 8px 8px 22px; border: 0; background: #FFFFFF; box-shadow: 1px 2px 2px rgba(40,30,20,0.16), 5px 9px 16px -6px rgba(40,30,20,0.22); cursor: pointer; perspective: 800px">
+<span style="display: block; position: relative; aspect-ratio: 1 / 1; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(.2,.8,.2,1); transform: ${ph.flipT}">
+<span style="position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; background: ${ph.tone}; display: flex; align-items: flex-end; padding: 6px; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9px; color: #FFFFFF">${(ph.hasPhoto) ? html`<img src="${ph.photo}" alt="${ph.alt}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover" />` : null}${(ph.noPhoto) ? html`${ph.label}` : null}</span>
+<span style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: ${c.mount}; display: flex; align-items: center; justify-content: center; padding: 6px; box-sizing: border-box; text-align: center; "><img src="${ph.backImg}" alt="${ph.back}" style="display: block; height: ${ph.backH}px; width: auto; max-width: 85%; object-fit: contain" /></span>
+</span>
+</button>
+<span aria-hidden="true" class="tape" style="position: absolute; top: -8px; left: 50%; margin-left: -26px; width: 52px; height: 18px; background: linear-gradient(90deg, rgba(214,198,158,.72), rgba(230,218,184,.88) 40%, rgba(214,198,158,.72)); pointer-events: none; transform: rotate(${ph.tapeTilt}deg)"></span></div>
+`)}
+</div>
+<p style="margin: 0; align-self: flex-end; transform: rotate(-2deg)"><img src="assets/handwriting/tap-a-photo.png" alt="tap a photo to see the back" style="display: block; height: 21px; width: auto; max-width: 100%; object-fit: contain; object-position: right center;; align-self: flex-start; flex: none" /></p>
+</div>
+` : null}
+
+
+${(s2) ? html`
+<div class="pgL" style="position: relative; z-index: 3; padding: 44px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px; border-radius: 2px">
+<div class="pet-side">
+<button type="button" class="pet-btn" onClick="${petTap}" aria-label="${petLabel}"><img class="pet-img" src="${petSrc}" alt="" style="animation: ${petAnim}" /></button>
+${(petAsleep) ? html`<span class="pet-z" aria-hidden="true">z</span><span class="pet-z b" aria-hidden="true">z</span>` : null}
+</div>
+<h2 style="margin: 0"><img src="assets/handwriting/where-ive-been.png" alt="where i’ve been" style="display: block; height: 34px; width: auto; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></h2>
+<div role="tablist" aria-label="Experience" style="position: relative; display: flex; flex-direction: column; border-left: 2px solid ${c.rule}">
+<span aria-hidden="true" style="position: absolute; left: -2px; top: 0; width: 3px; height: 100px; background: ${c.thread}; transform: translateY(${markerY}px); transition: transform 0.4s cubic-bezier(.2,.8,.2,1)"></span>
+${(experiences || []).map((e) => html`
+<button type="button" role="tab" aria-selected="${e.selStr}" onClick="${e.pick}" style="display: flex; flex-direction: column; justify-content: center; gap: 5px; height: 100px; padding: 0 12px 0 20px; border: 0; background: ${e.bg}; cursor: pointer; text-align: left; color: ${c.ink}; transition: background 0.3s">
+<span style="display: flex; flex-direction: column; gap: 3px"><span style="font-size: 18px; line-height: 1.15">${e.tab}</span><span style="font-size: 14px; line-height: 1.2; color: ${c.muted}">${e.pos}</span></span>
+<img src="${e.dateImg}" alt="${e.dates}" style="display: block; height: ${e.dateH}px; width: auto; align-self: flex-start; flex: none" />
+</button>
+`)}
+</div>
+<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+<span style="font-size: 14px; font-weight: 600; color: #8C2A4A">currently working on:</span>
+<p style="margin: 0"><img src="assets/handwriting/a-page-builder-project.png" alt="a page builder project" style="display: block; height: 24px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></p>
+</div>
+</div>
+<div class="pgR" style="position: relative; overflow: hidden; padding: 44px 52px; box-sizing: border-box; border-radius: 2px">
+${(experiences || []).map((e) => html`
+${(e.active) ? html`
+<div role="tabpanel" style="display: flex; flex-direction: column; gap: 20px; height: 100%; animation: swapIn 0.45s cubic-bezier(.2,.8,.2,1) both">
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: start">
+<div style="position: relative; transform: rotate(${e.tilt}deg)">
+${(e.hasPhoto) ? html`
+<button type="button" class="lift" onClick="${e.flip}" aria-label="Flip the scan over" aria-pressed="${e.flippedStr}" style="position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; perspective: 800px">
+<span style="display: block; position: relative; aspect-ratio: 3 / 4; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(.2,.8,.2,1); transform: ${e.flipT}">
+<span style="position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; background: ${e.color}; display: flex; align-items: flex-end; padding: 8px; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9px; color: #F7F4EE">${(e.hasPhoto) ? html`<img src="${e.photo}" alt="${e.photoAlt}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover" />` : null}${(e.noPhoto) ? html`[ Scan ]` : null}</span>
+<span style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: ${c.mount}; border: 1px solid ${c.rule}; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 10px; text-align: center; "><img src="${e.backImg}" alt="${e.back}" style="display: block; height: ${e.backH}px; width: auto; max-width: 88%; object-fit: contain" /></span>
+</span>
+</button>
+` : null}
+${(e.noPhoto) ? html`
+<div style="position: relative; aspect-ratio: 4 / 3; margin-top: 18px; background: ${c.mount}; background-image: repeating-linear-gradient(180deg, transparent 0px, transparent 21px, ${c.line} 21px, ${c.line} 22px); box-shadow: 1px 2px 2px rgba(40,30,20,0.14), 4px 8px 14px -6px rgba(40,30,20,0.2); display: flex; align-items: center; justify-content: center; padding: 10px; box-sizing: border-box"><img src="${e.backImg}" alt="${e.back}" style="display: block; height: ${e.backH}px; width: auto; max-width: 88%; object-fit: contain" /></div>
+` : null}
+<span aria-hidden="true" class="tape" style="position: absolute; top: -9px; left: 40px; width: 70px; height: 20px; background: linear-gradient(90deg, rgba(214,198,158,.72), rgba(230,218,184,.88) 40%, rgba(214,198,158,.72)); transform: rotate(5deg); pointer-events: none"></span></div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0"><img src="${e.titleImg}" alt="${e.title}" style="display: block; height: 27px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; align-self: flex-start; flex: none" /></h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.45">${e.role}</p>
+</div>
+</div>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.6">
+${(e.lines || []).map((ln) => html`<li>${ln}</li>`)}
+</ul>
+<button type="button" class="openbtn" onClick="${e.open}" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 500; color: ${c.accent}; text-decoration: underline; text-underline-offset: 4px">Pull out the file →</button>
+${(e.hasPhoto) ? html`<p style="margin: auto 0 0"><img src="assets/handwriting/tap-a-photo.png" alt="tap a photo to see the back" style="display: block; height: 20px; width: auto; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></p>` : null}
+</div>
+` : null}
+`)}
+</div>
+` : null}
+
+
+${(s3) ? html`
+<div class="pgL" style="position: relative; padding: 48px 52px; box-sizing: border-box; display: flex; flex-direction: column; gap: 26px; border-radius: 2px">
+<p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px">Say hi! I’m always up for a good chat :)</p>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0 0 8px"><img src="assets/handwriting/find-me.png" alt="find me!" style="display: block; height: 32px; width: auto; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></h3>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; padding-top: 10px">
+${(contactRows || []).map((t) => html`
+<a href="${t.href}" class="lift" style="display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: ${c.ink}; transform: rotate(${t.tilt}deg)">
+<span style="display: flex; align-items: center; gap: 12px; min-height: 44px">
+<span aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex: none"><img src="${t.icon}" alt="" style="display: block; max-width: 100%; max-height: ${t.iconH}px; width: auto; height: auto" /></span>
+<img src="${t.img}" alt="${t.label}" style="display: block; height: ${t.wordH}px; width: auto; flex: none" />
+</span>
+<span style="padding-left: 50px; font-size: 13px; color: ${c.muted}">${t.value}</span>
+</a>
+`)}
+</div>
+</div>
+</div>
+<div style="position: relative; overflow: hidden; padding: 48px 44px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; gap: 32px; border-radius: 2px">
+<div class="endFront" aria-hidden="true" style="position: absolute; inset: 0; transform: scaleX(-1)"></div>
+${(backHoles || []).map((h) => html`
+<span aria-hidden="true" style="position: absolute; left: ${h.x}%; top: ${h.y}%; width: 22px; height: 22px; margin: -11px 0 0 -11px; pointer-events: none; border-radius: 50%; background: ${c.paper}; box-shadow: inset 0 2px 3px rgba(0,0,0,0.4)"></span>
+`)}
+<p style="position: relative; margin: 0; align-self: flex-start; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; color: ${c.endText}">${backHint}</p>
+<div style="position: relative; align-self: flex-end; transform: rotate(3.5deg)">
+<div class="pet-found" ref="${refPetFound}" onPointerDown="${petDown}" onPointerMove="${petMove}" onPointerUp="${petUp}" onPointerCancel="${petUp}" style="bottom: ${petFoundBottom}; z-index: ${petFoundZ}">
+<div class="pet-popin"><div class="pet-shake" style="animation: ${petShakeAnim}">
+<button type="button" class="pet-btn" onClick="${petTapFound}" aria-label="${petFoundLabel}"><img class="pet-img" src="${petSrc}" alt="" style="animation: ${petAnim}" /></button>
+</div></div>
+${(petAsleep) ? html`<span class="pet-z" aria-hidden="true" style="top: 20%">z</span><span class="pet-z b" aria-hidden="true" style="top: 20%">z</span>` : null}
+</div>
+<div style="position: relative; z-index: 1; background: ${c.paper}; border: 1px solid ${c.ink}; padding: 22px 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px">
+<p style="margin: 0; display: flex; flex-direction: column; gap: 5px"><img src="assets/handwriting/if-found.png" alt="if found," style="display: block; height: 17px; width: auto; align-self: flex-start; flex: none" /><img src="assets/handwriting/please-return-to.png" alt="please return to:" style="display: block; height: 18px; width: auto; align-self: flex-start; flex: none" /></p>
+<img src="assets/handwriting/olivia-tran-return-label.png" alt="Olivia Tran" style="display: block; height: 24px; width: auto; align-self: flex-start; flex: none; margin-top: 12px" />
+<a href="mailto:ot.olivia.tran@gmail.com" style="display: block; margin-top: 8px"><img src="assets/handwriting/email-address.png" alt="ot.olivia.tran@gmail.com" style="display: block; height: 21px; width: auto; align-self: flex-start; flex: none" /></a>
+</div>
+</div>
+</div>
+` : null}
+
+</div>
+
+
+<div ref="${refDragR}" aria-hidden="true" style="display: none; position: absolute; top: 0; right: 0; width: 50%; height: 100%; z-index: 5; transform-origin: left center; background: ${c.flipR}; box-shadow: 0 0 40px rgba(0,0,0,0.3); border-radius: 2px"></div>
+<div ref="${refDragL}" aria-hidden="true" style="display: none; position: absolute; top: 0; left: 0; width: 50%; height: 100%; z-index: 5; transform-origin: right center; background: ${c.flipL}; box-shadow: 0 0 40px rgba(0,0,0,0.3); border-radius: 2px"></div>
+
+
+${(showCornerR) ? html`
+<button type="button" class="corner" aria-label="Turn the page (or drag the corner)" onClick="${cornerClickR}" onPointerDown="${cornerDownR}" onPointerMove="${cornerMove}" onPointerUp="${cornerUp}" onPointerCancel="${cornerUp}" style="position: absolute; right: 0; bottom: 0; width: 96px; height: 96px; padding: 0; border: 0; background: transparent; z-index: 4; touch-action: none; cursor: grab">
+<span class="curl" aria-hidden="true" style="position: absolute; right: 0; bottom: 0; width: 30px; height: 30px; border-radius: 0 0 6px 0; background: linear-gradient(to top left, ${c.rim} 49%, ${c.rule} 51%, ${c.paper} 100%); box-shadow: -3px -3px 6px rgba(0,0,0,0.15)"></span>
+</button>
+` : null}
+${(showCornerL) ? html`
+<button type="button" class="corner" aria-label="Turn back a page (or drag the corner)" onClick="${cornerClickL}" onPointerDown="${cornerDownL}" onPointerMove="${cornerMove}" onPointerUp="${cornerUp}" onPointerCancel="${cornerUp}" style="position: absolute; left: 0; bottom: 0; width: 96px; height: 96px; padding: 0; border: 0; background: transparent; z-index: 4; touch-action: none; cursor: grab">
+<span class="curl" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 30px; height: 30px; border-radius: 0 0 0 6px; background: linear-gradient(to top right, ${c.rim} 49%, ${c.rule} 51%, ${c.paper} 100%); box-shadow: 3px -3px 6px rgba(0,0,0,0.15)"></span>
+</button>
+` : null}
+
+
+${(flipNext) ? html`
+<div class="flip" aria-hidden="true" style="position: absolute; top: 0; right: 0; width: 50%; height: 100%; z-index: 5; transform-origin: left center; animation: flipNext ${flipDur} ease-in-out forwards; background: ${c.flipR}; box-shadow: 0 0 40px rgba(0,0,0,0.3); border-radius: 2px"></div>
+` : null}
+${(flipPrev) ? html`
+<div class="flip" aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 50%; height: 100%; z-index: 5; transform-origin: right center; animation: flipPrev ${flipDur} ease-in-out forwards; background: ${c.flipL}; box-shadow: 0 0 40px rgba(0,0,0,0.3); border-radius: 2px"></div>
+` : null}
+
+
+${(showInsert) ? html`
+<div style="position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box">
+<button type="button" aria-label="Close project" onClick="${closeProj}" style="position: absolute; inset: 0; border: 0; padding: 0; border-radius: 6px; background: rgba(18,22,20,0.55); cursor: pointer; animation: ${fadeAnim}"></button>
+<div role="dialog" aria-label="${d.title}" class="pgCard" style="position: relative; width: 100%; max-width: 660px; max-height: 100%; overflow: auto; box-sizing: border-box; padding: 34px 40px 36px; border-top: 10px solid ${c.accent}; box-shadow: 0 30px 60px rgba(0,0,0,0.4); display: flex; flex-direction: column; gap: 18px; animation: ${insertAnim}">
+<div aria-hidden="true" class="tape" style="position: absolute; top: -4px; right: 60px; width: 90px; height: 24px; background: linear-gradient(90deg, rgba(214,198,158,.72), rgba(230,218,184,.88) 40%, rgba(214,198,158,.72)); transform: rotate(4deg)"></div><div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: ${c.muted}">
+<span></span>
+<button type="button" onClick="${closeProj}" aria-label="Close" style="min-height: 44px; min-width: 44px; padding: 0 4px; border: 0; background: transparent; cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 22px; line-height: 1; color: ${c.ink}">×</button>
+</div>
+<h3 style="margin: 0"><img src="${d.titleImg}" alt="${d.title}" style="display: block; height: 32px; width: auto; max-width: 100%; object-fit: contain; object-position: left center; max-width: 100%; object-fit: contain; object-position: left center; align-self: flex-start; flex: none" /></h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.5">${d.summary}</p>
+<div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px 18px; border-top: 1px solid ${c.ink}; padding-top: 16px">
+<span style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; color: ${c.muted}; padding-top: 3px">Role</span><span style="font-size: 17px; line-height: 1.5">${d.role}</span>
+<span style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; color: ${c.muted}; padding-top: 3px">What I did</span><span style="font-size: 17px; line-height: 1.5">${d.did}</span>
+<span style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; color: ${c.muted}; padding-top: 3px">Outcome</span><span style="font-size: 17px; line-height: 1.5">${d.outcome}</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 24px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px">
+${(d.links || []).map((l) => html`<a href="${l.href}" style="color: ${c.accent}">${l.label} ↗</a>`)}
+</div>
+</div>
+</div>
+` : null}
+</div>
+
+
+
+
+<canvas ref="${refTrail}" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50"></canvas>
+</div>`;
+}
+class Component extends DCLogic {
+componentDidMount() {
+try { this._fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches; } catch (e) { this._fine = false; }
+this._onAct = () => { const now = Date.now(); if (this._lastAct && now - this._lastAct < 800 && (this.state || {}).petMood !== 'sleep') return; this._lastAct = now; this._petWake(); };
+try { window.addEventListener('pointermove', this._onAct, { passive: true }); window.addEventListener('keydown', this._onAct); window.addEventListener('scroll', this._onAct, { passive: true }); } catch (e) {}
+this._petWake();
+this.forceUpdate();
+}
+_petWake() {
+if (this._pIdle) clearTimeout(this._pIdle);
+if ((this.state || {}).petMood === 'sleep') this.setState({ petMood: 'smile' });
+this._pIdle = setTimeout(() => { if (!this._petBusy) this.setState({ petMood: 'sleep' }); }, 14000);
+}
+_petClear() { [this._p1, this._p2, this._p3].forEach((t) => { if (t) clearTimeout(t); }); }
+_petEat(fx) {
+const st = this.state || {};
+this._petClear(); this._petBusy = true;
+const x = Math.max(0.08, Math.min(0.95, fx));
+this.setState({ petX: x, petMood: 'smile', petAct: 'hop', petN: (st.petN || 0) + 1 });
+this._p1 = setTimeout(() => this.setState({ petMood: 'eat', petAct: 'none' }), 620);
+this._p2 = setTimeout(() => this.setState({ petMood: 'happy', petAct: 'grow', petN: ((this.state || {}).petN || 0) + 1 }), 1150);
+this._p3 = setTimeout(() => { this._petBusy = false; this.setState({ petMood: 'smile', petAct: 'none' }); }, 2500);
+this._petWake();
+}
+_petTap() {
+const st = this.state || {};
+this._petClear(); this._petBusy = true;
+this.setState({ petMood: 'happy', petAct: 'wig', petN: (st.petN || 0) + 1 });
+this._p3 = setTimeout(() => { this._petBusy = false; this.setState({ petMood: 'smile', petAct: 'none' }); }, 1500);
+this._petWake();
+}
+componentWillUnmount() {
+this._petClear(); if (this._pIdle) clearTimeout(this._pIdle);
+try { window.removeEventListener('pointermove', this._onAct); window.removeEventListener('keydown', this._onAct); window.removeEventListener('scroll', this._onAct); } catch (e) {}
+if (this._t) clearTimeout(this._t);
+if (this._t2) clearTimeout(this._t2);
+if (this._t3) clearTimeout(this._t3);
+if (this._t4) clearTimeout(this._t4);
+if (this._raf) cancelAnimationFrame(this._raf);
+}
+renderVals() {
+const P = {
+original: { desk: '#121614', deskText: '#E9E4D8', deskMuted: '#A9A397', rim: '#2A2F2B', paper: '#F7F4EE', line: '#E6DFD2', ink: '#1A1A18', muted: '#5C574E', rule: '#CFC7B8', mount: '#EDE7DB', end: '#F3C5D5', endText: '#1A1A18', leaf: ['#6E9A54', '#3E6A2E', '#2A4A20'], accent: '#8C2A4A', accent2: '#3E6A2E', thread: '#C8243C', card: '#F3C5D5', cardInk: '#1A1A18', tape: 'rgba(222,208,170,0.85)', btnFill: '#E9E4D8', btnText: '#121614',
+tabs: [['#E9E4D8', '#121614'], ['#F3C5D5', '#1A1A18'], ['#6E9A54', '#121614'], ['#8C2A4A', '#F7F4EE']], sw: ['#8C2A4A', '#4B6A7A', '#3E6A2E', '#8E7A52'], dots: ['#8FAA78', '#8C2A4A', '#E9A9BF', '#3E6A2E', '#A9BE92', '#6E9A54'] },
+redthread: { desk: '#121614', deskText: '#EFE7DC', deskMuted: '#A9A397', rim: '#2A2F2B', paper: '#F7F4EE', line: '#E6DFD2', ink: '#1A1A18', muted: '#5C574E', rule: '#CFC7B8', mount: '#EDE7DB', end: '#F3C5D5', endText: '#1A1A18', leaf: ['#6E9A54', '#3E6A2E', '#2A4A20'], accent: '#C8243C', accent2: '#3E6A2E', thread: '#D7262E', card: '#F3C5D5', cardInk: '#1A1A18', tape: 'rgba(222,208,170,0.85)', btnFill: '#C8243C', btnText: '#FFF6F2',
+tabs: [['#EFE7DC', '#121614'], ['#F3C5D5', '#1A1A18'], ['#C8243C', '#FFF6F2'], ['#3E6A2E', '#F7F4EE']], sw: ['#C8243C', '#2E2A2A', '#6E9A54', '#E9A9BF'], dots: ['#E9A9BF', '#C8243C', '#F3C5D5', '#9B1B2A', '#D96A78', '#6E9A54'] },
+cherry: { desk: '#1C0B0D', deskText: '#F2E6DF', deskMuted: '#B79D98', rim: '#3A1A1E', paper: '#F8F2EA', line: '#EBDCD3', ink: '#1E1214', muted: '#6A5450', rule: '#D9C6BD', mount: '#F0E2DA', end: '#B30E2A', endText: '#FFF4F0', leaf: ['#F7C9D3', '#EBA5B5', '#D9879B'], accent: '#B30E2A', accent2: '#5A0F1A', thread: '#E01E37', card: '#F7C9D3', cardInk: '#1E1214', tape: 'rgba(240,210,200,0.85)', btnFill: '#F2E6DF', btnText: '#1C0B0D',
+tabs: [['#F2E6DF', '#1C0B0D'], ['#F7C9D3', '#1E1214'], ['#C8102E', '#FFF4F0'], ['#5A0F1A', '#F7E8E2']], sw: ['#C8102E', '#5A0F1A', '#EBA5B5', '#1E1214'], dots: ['#C8102E', '#9B0D24', '#F7C9D3', '#5A0F1A', '#E8566B', '#EBA5B5'] },
+tomato: { desk: '#EADBD2', deskText: '#2A1A16', deskMuted: '#6E5A52', rim: '#D4BFB3', paper: '#FFFCF6', line: '#EADFD5', ink: '#22201C', muted: '#5E5850', rule: '#D8CEC2', mount: '#F3ECE2', end: '#C9302A', endText: '#FFF8F2', leaf: ['#B9C7A0', '#93A877', '#6F8656'], accent: '#C9302A', accent2: '#5F7548', thread: '#D7372A', card: '#F6D0C7', cardInk: '#22201C', tape: 'rgba(214,200,170,0.8)', btnFill: '#C9302A', btnText: '#FFF8F2',
+tabs: [['#FFFCF6', '#22201C'], ['#F6D0C7', '#22201C'], ['#C9302A', '#FFF8F2'], ['#93A877', '#22201C']], sw: ['#C9302A', '#93A877', '#E58A6E', '#22201C'], dots: ['#C9302A', '#E58A6E', '#F6D0C7', '#93A877', '#B9C7A0', '#8E1F18'] },
+postbox: { desk: '#A3161F', deskText: '#FBEFE6', deskMuted: '#F0C9C2', rim: '#6E0D14', paper: '#F6EFE3', line: '#E6DACA', ink: '#161414', muted: '#5B524A', rule: '#D3C6B5', mount: '#EEE4D5', end: '#161414', endText: '#F6EFE3', leaf: ['#E0303A', '#B81D27', '#8A121B'], accent: '#B81D27', accent2: '#161414', thread: '#B81D27', card: '#F2C9C9', cardInk: '#161414', tape: 'rgba(230,214,190,0.85)', btnFill: '#FBEFE6', btnText: '#A3161F',
+tabs: [['#F6EFE3', '#161414'], ['#F2C9C9', '#161414'], ['#161414', '#F6EFE3'], ['#6E0D14', '#FBEFE6']], sw: ['#B81D27', '#161414', '#F2C9C9', '#6E0D14'], dots: ['#B81D27', '#161414', '#F2C9C9', '#E0303A', '#6E0D14', '#D9A0A0'] }
+};
+const p = P[this.props.palette ?? 'original'] || P.original;
+const lines = 'repeating-linear-gradient(180deg, ' + p.paper + ' 0px, ' + p.paper + ' 29px, ' + p.line + ' 29px, ' + p.line + ' 30px)';
+const deskK = this.props.desk ?? 'walnut';
+const D = { charcoal: ['#161916', '#2A2F2B'], olive: ['#2F3A2C', '#20281E'], taupe: ['#B9AD9C', '#8E8270'], wood: ['', '#3B2418'], 'gray wood': ['', '#2E2824'], walnut: ['', '#34241C'] }[deskK] || ['#161916', '#2A2F2B'];
+const c = Object.assign({}, p, { rim: D[1],
+leftBg: 'linear-gradient(to right, rgba(0,0,0,0) 86%, rgba(70,40,30,0.14) 100%), ' + lines,
+rightBg: 'linear-gradient(to left, rgba(0,0,0,0) 86%, rgba(70,40,30,0.14) 100%), ' + lines,
+cardBg: lines,
+leaf: 'radial-gradient(70% 60% at 40% 35%, ' + p.leaf[0] + ', ' + p.leaf[1] + ' 60%, ' + p.leaf[2] + ' 100%)',
+flipR: 'linear-gradient(to left, ' + p.paper + ' 70%, ' + p.rule + ' 100%)',
+flipL: 'linear-gradient(to right, ' + p.paper + ' 70%, ' + p.rule + ' 100%)'
+});
+
+const st = this.state || {};
+const s = st.spread || 0;
+const flip = st.flip || null;
+const last = 3;
+const isOpen = typeof st.open === 'number';
+
+/* page turning */
+const go = (n) => {
+if (this._busy || n === s || n < 0 || n > last) return;
+if (typeof (this.state || {}).open === 'number') { if (this._t2) clearTimeout(this._t2); this.setState({ open: null, phase: null }); }
+this.setState({ spread: n }); return;
+this._busy = true;
+const dir = n > s ? 1 : -1;
+const dur = Math.abs(n - s) > 1 ? 300 : 520;
+const step = (cur) => {
+this.setState({ flip: dir > 0 ? 'next' : 'prev', dur: dur });
+this._t = setTimeout(() => {
+const nx = cur + dir;
+this.setState({ spread: nx, flip: null });
+if (nx !== n) { this._t = setTimeout(() => step(nx), 40); } else { this._busy = false; }
+}, dur - 20);
+};
+step(s);
+};
+
+/* drag the corner */
+const cornerDown = (dir) => (e) => {
+if (this._busy || isOpen) return;
+const el = dir > 0 ? this._dragR : this._dragL;
+if (!el || !this._book) return;
+try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+this._drag = { dir: dir, x0: e.clientX, w: this._book.getBoundingClientRect().width, prog: 0, el: el };
+this._dragged = false;
+el.style.transition = 'none';
+el.style.transform = 'rotateY(0deg)';
+el.style.display = 'block';
+};
+const cornerMove = (e) => {
+const d = this._drag;
+if (!d) return;
+const dx = d.dir > 0 ? d.x0 - e.clientX : e.clientX - d.x0;
+if (Math.abs(dx) > 4) this._dragged = true;
+d.prog = Math.max(0, Math.min(1, dx / (d.w * 0.55)));
+d.el.style.transform = 'rotateY(' + (d.dir > 0 ? -180 : 180) * d.prog + 'deg)';
+};
+const cornerUp = () => {
+const d = this._drag;
+this._drag = null;
+if (!d) return;
+d.el.style.transition = 'transform 0.35s ease-out';
+if (!this._dragged) { d.el.style.display = 'none'; return; }
+if (d.prog > 0.35) {
+this._busy = true;
+d.el.style.transform = 'rotateY(' + (d.dir > 0 ? -180 : 180) + 'deg)';
+this._t3 = setTimeout(() => { d.el.style.display = 'none'; this._busy = false; this.setState({ spread: s + d.dir }); }, 340);
+} else {
+d.el.style.transform = 'rotateY(0deg)';
+this._t3 = setTimeout(() => { d.el.style.display = 'none'; }, 340);
+}
+};
+const cornerClick = (dir) => () => { if (this._dragged) { this._dragged = false; return; } go(s + dir); };
+
+/* pull-out insert */
+const openProj = (i) => { if (this._busy) return; if (this._t2) clearTimeout(this._t2); this.setState({ open: i, phase: 'in' }); };
+const closeProj = () => {
+const cur = this.state || {};
+if (typeof cur.open !== 'number' || cur.phase === 'out') return;
+this.setState({ phase: 'out' });
+this._t2 = setTimeout(() => this.setState({ open: null, phase: null }), 300);
+};
+const out = st.phase === 'out';
+
+/* lift & flip */
+const flipped = st.flipped || {};
+const flipScan = (i) => () => { const cur = (this.state || {}).flipped || {}; const nx = Object.assign({}, cur); nx[i] = !cur[i]; this.setState({ flipped: nx }); };
+
+/* hole punch */
+const holes = st.holes || [];
+const punchFor = (key) => (e) => {
+const cur = (this.state || {})[key] || [];
+if (cur.length >= 40) return;
+let fx = 0.15 + Math.random() * 0.7, fy = 0.12 + Math.random() * 0.7;
+try {
+const r = e.currentTarget.getBoundingClientRect();
+if (e.detail > 0 && e.clientX) { fx = (e.clientX - r.left) / r.width; fy = (e.clientY - r.top) / r.height; }
+} catch (err) {}
+const nx = {}; nx[key] = cur.concat([{ fx: fx, fy: fy, chad: Math.random() < 0.6 ? p.leaf[0] : p.end }]);
+this.setState(nx);
+if (key === 'holes') this._petEat(fx);
+};
+const toPct = (hh) => ({ x: (hh.fx * 100).toFixed(1), y: (hh.fy * 100).toFixed(1), fy: hh.fy.toFixed(3), chad: hh.chad });
+/* kokedama pet */
+const PET = {
+1: ['moss-ball/stage1-smile.png', 'moss-ball/stage1-eat.png', 'moss-ball/stage1-happy.png', 'moss-ball/stage1-sleep.png'],
+2: ['moss-ball/stage2-smile.png', 'moss-ball/stage2-eat.png', 'moss-ball/stage2-happy.png', 'moss-ball/stage2-sleep.png'],
+3: ['moss-ball/stage3-smile.png', 'moss-ball/stage3-eat.png', 'moss-ball/stage3-happy.png', 'moss-ball/stage3-sleep.png'],
+4: ['moss-ball/stage4-smile.png', 'moss-ball/stage4-eat.png', 'moss-ball/stage4-happy.png', 'moss-ball/stage4-sleep.png'],
+5: ['moss-ball/stage5-smile.png', 'moss-ball/stage5-eat.png', 'moss-ball/stage5-happy.png', 'moss-ball/stage5-sleep.png'],
+6: ['moss-ball/stage6-smile.png', 'moss-ball/stage6-eat.png', 'moss-ball/stage6-happy.png', 'moss-ball/stage6-sleep.png'],
+7: ['moss-ball/stage7-smile.png', 'moss-ball/stage7-eat.png', 'moss-ball/stage7-happy.png', 'moss-ball/stage7-sleep.png'],
+8: ['moss-ball/stage8-smile.png', 'moss-ball/stage8-eat.png', 'moss-ball/stage8-happy.png', 'moss-ball/stage8-sleep.png']
+};
+const petMood = st.petMood || 'smile';
+const petStage = Math.min(8, 1 + Math.floor(holes.length / 3));
+const petSrc = 'assets/' + PET[petStage][({ smile: 0, eat: 1, happy: 2, sleep: 3 })[petMood] || 0];
+const pN = st.petN || 0, pAB = pN % 2 ? 'A' : 'B';
+const petAnim = petMood === 'sleep' ? 'petBreathe 2.6s ease-in-out infinite'
+  : st.petAct === 'hop' ? 'petHop' + pAB + ' 0.55s ease-out both'
+  : st.petAct === 'wig' ? 'petWig' + pAB + ' 0.7s ease-in-out both'
+  : st.petAct === 'grow' && holes.length % 3 === 0 ? 'petHop' + pAB + ' 0.6s ease-out both'
+  : 'none';
+const endHoles = holes.map(toPct);
+const backHoles = holes.map((hh) => ({ x: ((1 - hh.fx) * 100).toFixed(1), y: (hh.fy * 100).toFixed(1) }));
+const contactRows = [
+{ label: 'Email', icon: 'assets/icons/email.png', iconH: 26, wordH: 24, tilt: 0, img: 'assets/handwriting/contact-email.png', value: 'ot.olivia.tran@gmail.com', href: 'mailto:ot.olivia.tran@gmail.com' },
+{ label: 'LinkedIn', icon: 'assets/icons/linkedin.png', iconH: 28, wordH: 25, tilt: -2.5, img: 'assets/handwriting/contact-linkedin.png', value: 'ot-olivia-tran', href: 'https://www.linkedin.com/in/ot-olivia-tran/' },
+{ label: 'GitHub', icon: 'assets/icons/github.png', iconH: 30, wordH: 28, tilt: 0, img: 'assets/handwriting/contact-github.png', value: 'kyolivia', href: 'https://github.com/kyolivia' },
+{ label: 'Résumé', icon: 'assets/icons/resume.png', iconH: 32, wordH: 19, tilt: 1.8, img: 'assets/handwriting/contact-resume.png', value: 'one page', href: 'resume.html' }
+];
+const aboutPhotos = [
+{ label: '[ Dancing ]', photo: 'assets/photos/dance-rehearsal.jpg', alt: 'Olivia mid-move at dance rehearsal', back: 'dancing', backH: 18, tapeTilt: -6, backImg: 'assets/handwriting/snapshot-back-dancing.png', tone: 'linear-gradient(160deg, #C9A9A6, #8C6A68)', tilt: 0 },
+{ label: '[ At the koto ]', photo: 'assets/photos/koto.jpg', alt: 'Olivia’s koto, strings and white bridges on dark wood', back: 'koto', backH: 13, tapeTilt: 4, backImg: 'assets/handwriting/snapshot-back-koto.png', tone: 'linear-gradient(160deg, #B9B39A, #7D7A62)', tilt: 4 },
+{ label: '[ Plants ]', photo: 'assets/photos/plant-wall.jpg', alt: 'Plants around a pegboard in Olivia’s dorm room', back: 'plants', backH: 15, tapeTilt: -2, backImg: 'assets/handwriting/snapshot-back-plants.png', tone: 'linear-gradient(160deg, #9DB08A, #5E7550)', tilt: -2.5 }
+].map((x, i) => Object.assign(x, {
+hasPhoto: !!x.photo, noPhoto: !x.photo, alt: x.alt || '',
+flip: flipScan('a' + i),
+flipT: flipped['a' + i] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+flippedStr: flipped['a' + i] ? 'true' : 'false'
+}));
+
+/* pencil cursor */
+const pencilOn = (this.props.pencil ?? true) && this._fine;
+const onMove = (e) => {
+if (!pencilOn || !this._root) return;
+const r = this._root.getBoundingClientRect();
+const x = e.clientX - r.left, y = e.clientY - r.top;
+const cv = this._trail;
+if (!cv) return;
+const dpr = window.devicePixelRatio || 1;
+if (cv.width !== Math.round(r.width * dpr) || cv.height !== Math.round(r.height * dpr)) { cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr); this._last = null; }
+const ctx = cv.getContext('2d');
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+const lp = this._last;
+if (lp && Math.abs(lp.x - x) + Math.abs(lp.y - y) < 80) {
+ctx.globalCompositeOperation = 'source-over';
+ctx.strokeStyle = this._down ? 'rgba(45,45,45,0.6)' : 'rgba(60,60,60,0.32)';
+ctx.lineWidth = this._down ? 2 : 1.2;
+ctx.lineCap = 'round';
+ctx.beginPath(); ctx.moveTo(lp.x, lp.y); ctx.lineTo(x, y); ctx.stroke();
+}
+this._last = { x: x, y: y };
+this._lastDraw = performance.now();
+if (!this._raf) {
+const fade = () => {
+const c2 = cv.getContext('2d');
+c2.setTransform(1, 0, 0, 1, 0, 0);
+c2.globalCompositeOperation = 'destination-out';
+c2.fillStyle = 'rgba(0,0,0,0.05)';
+c2.fillRect(0, 0, cv.width, cv.height);
+c2.globalCompositeOperation = 'source-over';
+if (performance.now() - this._lastDraw < 2500) { this._raf = requestAnimationFrame(fade); }
+else { c2.clearRect(0, 0, cv.width, cv.height); this._raf = null; }
+};
+this._raf = requestAnimationFrame(fade);
+}
+};
+const onLeave = () => { if (this._pencil) this._pencil.style.display = 'none'; this._last = null; };
+const onDown = () => { this._down = true; };
+const onUp = () => { this._down = false; };
+
+/* content */
+const expIdx = st.exp || 0;
+const projects = [
+{ tab: 'Amazon Web Services', photo: 'assets/photos/aws-photo-booth.jpg', photoAlt: 'Olivia and another intern in hats at an Amazon photo booth', pos: 'Software Development Intern', no: 'No. 01 · Industry', meta: 'Industry · 2026', color: p.sw[1], title: 'Amazon Web Services', tilt: -3.5, titleImg: 'assets/handwriting/exp-title-aws.png', backImg: 'assets/handwriting/exp-back-summer-26.png', backH: 16, role: 'Software Development Intern, SageMaker HyperPod · Santa Clara, CA', dates: 'May – Aug 2026', dateImg: 'assets/handwriting/exp-date-aws.png', dateH: 19, back: 'summer ’26',
+lines: ['Shipped a logging feature for the SageMaker HyperPod Inference Operator, a Kubernetes controller for ML inference on GPU clusters.', 'Cut ingestion 22% on a test cluster with the new logging, built in Go, Helm and AWS CloudWatch.'],
+summary: 'A Kubernetes controller that deploys and autoscales ML inference endpoints on GPU clusters.', did: 'Shipped a logging feature for the HyperPod Inference Operator in Go, Helm and AWS CloudWatch, and deployed autoscaling inference endpoints with vLLM and KEDA, testing JumpStart and Hugging Face models end to end.', outcome: 'Cut ingestion 22% on a test cluster through the new logging feature.', links: [{ label: 'About HyperPod', href: '#' }] },
+{ tab: 'Laboratory for Cognitive and Perceptual Learning', pos: 'Research', no: 'No. 02 · Research', meta: 'Research · 2025 —', color: p.sw[2], title: 'Lab for Cognitive & Perceptual Learning', tilt: 0, titleImg: 'assets/handwriting/exp-title-cognitive-lab.png', backImg: 'assets/handwriting/exp-back-nov-25-nov-26.png', backH: 14, role: 'Undergraduate Research Assistant, Brown', dates: 'Nov 2025 – Nov 2026', dateImg: 'assets/handwriting/exp-date-cognitive-lab.png', dateH: 15, back: 'nov ’25 – nov ’26',
+lines: ['Preprocess EEG data in MNE-Python, using ERP analysis to check signal quality across sessions.', 'Run participants through EEG and behavioral protocols, from fitting caps to placing electrodes.'],
+summary: 'Getting EEG recordings ready for analysis, and running the sessions that produce them.', did: 'Preprocess EEG data in MNE-Python with ERP analysis to assess signal quality across recording sessions, and run participants through EEG and behavioral protocols.', outcome: 'Ran data collection for pupillary biofeedback research while learning about perceptual learning.', links: [{ label: 'The lab', href: '#' }] },
+{ tab: 'Brown Orthopedic Spine Lab', pos: 'Research', no: 'No. 03 · Research', meta: 'Research · 2025 — 2026', color: p.sw[0], title: 'Brown Orthopedic Spine Lab', tilt: 2.5, titleImg: 'assets/handwriting/exp-title-spine-lab.png', backImg: 'assets/handwriting/exp-back-oct-25-may-26.png', backH: 18, role: 'Classification pipeline · second author on the paper', dates: 'Oct 2025 – May 2026', dateImg: 'assets/handwriting/exp-date-spine-lab.png', dateH: 19, back: 'oct ’25 – may ’26',
+lines: ['Built an LLM-based classification pipeline that labeled 100K Reddit posts, replacing manual annotation.', 'Second author, “Spine Care Discourse on Reddit,” The Spine Journal (under review).'],
+summary: 'How people give each other spine-care advice on Reddit, 2011–2024.', did: 'Built an automated text classification pipeline using LLM-based inference (ChatGPT-5 API), replacing manual annotation and making labels consistent across 100K posts.', outcome: 'Second author on a longitudinal analysis of peer advice and sentiment, under review at The Spine Journal.', links: [{ label: 'Paper (once published)', href: '#' }] },
+{ tab: 'Precision Web Studios', photo: 'assets/photos/precision-web-studios-logo.jpg', photoAlt: 'The Precision Web Studios logo: white lettering on a blue circle', pos: 'Founder', no: 'No. 04 · Studio', meta: 'Studio · 2022 — 2025', color: p.sw[3], title: 'Precision Web Studios', tilt: -1, titleImg: 'assets/handwriting/exp-title-precision.png', backImg: 'assets/handwriting/exp-back-hudson-valley.png', backH: 20, role: 'Founder, Hudson Valley, NY', dates: 'Jun 2022 – Jun 2025', dateImg: 'assets/handwriting/exp-date-precision.png', dateH: 21, back: 'hudson valley',
+lines: ['Built and launched 20 client websites end to end: intake, requirements, development, deployment and maintenance.', 'Handed full control of hosting and domains to every client before college.'],
+summary: 'A freelance web studio for local businesses.', did: 'Built and launched 20 client websites with WordPress, HTML and CSS, managing everything from client intake to maintenance.', outcome: 'Every client left with a live site and full ownership of its hosting and domain.', links: [{ label: '[Featured site]', href: '#' }] },
+{ tab: 'The Artemis Program', photo: 'assets/photos/artemis-team.jpg', photoAlt: 'The Artemis Program team in matching blue shirts', pos: 'Communications Director', no: 'No. 05 · Teaching', meta: 'Teaching', color: p.tabs[1][0], title: 'The Artemis Program', tilt: 3, titleImg: 'assets/handwriting/exp-title-artemis.png', backImg: 'assets/handwriting/exp-back-60-middle-schoolers.png', backH: 17, role: 'Communications Director', dates: 'Sep 2025 – present', dateImg: 'assets/handwriting/exp-date-artemis.png', dateH: 17, back: '60+ middle schoolers',
+lines: ['Teach CS fundamentals to 60+ students in grades 5–8.', 'Ran the micro:bit program at Brown, with a weekly object-oriented programming curriculum that ends in a project fair.'],
+summary: 'Teaching computer science to students.', did: 'Ran successful semesters of the micro:bit program at Brown, writing a weekly curriculum on object-oriented programming basics that builds up to a final project fair.', outcome: 'Created and manage the Artemis LinkedIn page, organizing photos, posting, and growing its following.', links: [{ label: 'The Artemis Program', href: '#' }] }
+].map((x, i) => Object.assign(x, {
+hasPhoto: !!x.photo, noPhoto: !x.photo,
+links: (x.links || []).filter((l) => l.href && l.href !== '#'),
+open: () => openProj(i), flip: flipScan('e' + i),
+flipT: flipped['e' + i] ? 'rotateY(180deg)' : 'rotateY(0deg)',
+flippedStr: flipped['e' + i] ? 'true' : 'false',
+active: i === expIdx, selStr: i === expIdx ? 'true' : 'false',
+bg: i === expIdx ? 'rgba(0,0,0,0.04)' : 'transparent',
+pick: () => this.setState({ exp: i })
+}));
+const experiences = projects;
+const sections = [
+{ label: 'contents', img: 'assets/handwriting/tab-contents.png', toc: 'Contents', pages: 'p. 00–01' },
+{ label: 'about', img: 'assets/handwriting/tab-about.png', toc: 'I. About', pages: 'p. 02–03' },
+{ label: 'experience', img: 'assets/handwriting/tab-experience.png', toc: 'II. Experience', pages: 'p. 04–05' },
+{ label: 'contact', img: 'assets/handwriting/tab-contact.png', toc: 'III. Contact', pages: 'p. 06–07' }
+];
+const shown = flip ? s + (flip === 'next' ? 1 : -1) : s;
+const tabs = sections.map((x, i) => ({
+label: x.label, img: x.img, hasImg: !!x.img, noImg: !x.img, bg: p.tabs[i][0], fg: p.tabs[i][1], imgFilter: /^#F|^#E/i.test(p.tabs[i][1]) ? 'invert(1)' : 'none',
+current: i === s ? 'page' : 'false',
+shift: i === s ? 'translateX(14px)' : 'translateX(0px)',
+go: () => go(i)
+}));
+const toc = sections.slice(1).map((x, i) => ({ label: x.toc, pages: x.pages, dot: p.tabs[i + 1][0], go: () => go(i + 1) }));
+
+let r = 11;
+const rnd = () => { r = (r * 16807) % 2147483647; return r / 2147483647; };
+const dots = [];
+for (let i = 0; i < 140; i++) {
+const t = Math.pow(rnd(), 0.6);
+const x = 4 + t * 86 + (rnd() - 0.5) * 18;
+const y = 2 + t * 88 + (rnd() - 0.5) * 20 * (1 - t * 0.5);
+const q = rnd();
+let col = p.dots[0];
+if (q < 0.1) col = p.dots[1]; else if (q < 0.22) col = p.dots[2]; else if (t > 0.72 && q < 0.6) col = p.dots[3]; else if (q < 0.45) col = p.dots[4]; else if (q < 0.7) col = p.dots[5];
+dots.push({ x: Math.max(0, Math.min(95, x)).toFixed(1), y: Math.max(0, Math.min(94, y)).toFixed(1), c: col, ring: 'none' });
+}
+holes.forEach((h, i) => {
+dots.push({ x: (8 + (i * 37) % 84).toFixed(1), y: (78 + (i * 53) % 16).toFixed(1), c: h.chad, ring: '0 0 0 2px ' + p.paper + ', 0 0 0 3px ' + p.accent });
+});
+
+return {
+c: c,
+refRoot: (el) => { this._root = el; },
+refBook: (el) => { this._book = el; },
+refDragR: (el) => { this._dragR = el; },
+refDragL: (el) => { this._dragL = el; },
+refTrail: (el) => { this._trail = el; },
+refPencil: (el) => { this._pencil = el; },
+rootClass: '',
+onMove: onMove, onLeave: onLeave, onDown: onDown, onUp: onUp,
+s0: s === 0, s1: s === 1, s2: s === 2, s3: s === 3,
+experiences: experiences, markerY: expIdx * 100, dots: dots, tabs: tabs, toc: toc, holes: holes,
+stainT: 'scale(' + [0.13, 0.38, 0.64, 1][s] + ') rotate(' + [0, 8, 14, 18][s] + 'deg)',
+stainO: [0.95, 0.55, 0.7, 1][s],
+nameImg: (((this.props.nameColor ?? 'burgundy') === 'burgundy')
+  ? {script: 'assets/handwriting/name-script-burgundy.png', caps: 'assets/handwriting/name-caps-burgundy.png', bubble: 'assets/handwriting/name-bubble-burgundy.png'}
+  : {script: 'assets/handwriting/name-script-ink.png', caps: 'assets/handwriting/name-caps-ink.png', bubble: 'assets/handwriting/name-bubble-ink.png'})[this.props.nameStyle ?? 'bubble'] || 'assets/handwriting/name-script-ink.png',
+nameMax: ({script: 380, caps: 400, bubble: 440})[this.props.nameStyle ?? 'bubble'] || 380,
+deskBg: '#CFC5B7',
+punch: punchFor('holes'),
+petSrc: petSrc, petAnim: petAnim, petX: (typeof st.petX === 'number' ? st.petX : 0.82).toFixed(3), petAsleep: petMood === 'sleep', 
+petTap: () => this._petTap(),
+refPetFound: (el) => { this._petEl = el; },
+petFoundBottom: st.petOut ? 'calc(100% - 3px)' : 'calc(100% - 16px)', petFoundZ: st.petOut ? 2 : 0,
+petShakeAnim: (st.petOut || petMood === 'sleep') ? 'none' : 'petShake 4.5s 2.5s ease-in-out infinite',
+petFoundLabel: st.petOut ? 'A little moss ball sitting on the label. Tap to say hi, or drag it down to tuck it back' : 'A little moss ball hiding behind the label. Drag it up to pull it out',
+petTapFound: () => { if (this._petDragged) return; this._petTap(); },
+petDown: (e) => {
+if (!this._petEl) return;
+this._pd = { x0: e.clientX, y0: e.clientY, out: !!(this.state || {}).petOut, moved: false, id: e.pointerId, t: e.currentTarget, dy: 0 };
+},
+petMove: (e) => {
+const d = this._pd; if (!d || !this._petEl) return;
+const dx = e.clientX - d.x0, dy = e.clientY - d.y0;
+if (!d.moved) {
+if (Math.hypot(dx, dy) < 6) return;
+d.moved = true; this._petDragged = true;
+try { d.t.setPointerCapture(d.id); } catch (err) {}
+this._petClear(); this._petBusy = true;
+this._petEl.style.transition = 'none';
+this.setState({ petMood: 'eat', petAct: 'none' });
+}
+d.dy = dy;
+const ty = d.out ? Math.max(-20, Math.min(120, dy)) : Math.max(-150, Math.min(12, dy));
+this._petEl.style.transform = 'translate(' + (dx * 0.35).toFixed(1) + 'px,' + ty.toFixed(1) + 'px)';
+},
+petUp: () => {
+const d = this._pd; this._pd = null;
+if (!d || !d.moved || !this._petEl) return;
+const el = this._petEl;
+const st2 = this.state || {};
+const done = () => { this._petBusy = false; this.setState({ petMood: 'smile', petAct: 'none' }); this._petWake(); };
+if (!d.out && d.dy < -40) {
+el.style.transition = 'none'; el.style.transform = '';
+this.setState({ petOut: true, petMood: 'happy', petAct: 'hop', petN: (st2.petN || 0) + 1 });
+this._p3 = setTimeout(done, 1400);
+} else if (d.out && d.dy > 40) {
+el.style.transition = 'none'; el.style.transform = '';
+this.setState({ petOut: false, petMood: 'smile', petAct: 'none' });
+this._petBusy = false; this._petWake();
+} else {
+el.style.transition = 'transform .35s cubic-bezier(.3,1.4,.5,1)'; el.style.transform = '';
+done();
+}
+setTimeout(() => { this._petDragged = false; }, 60);
+}, petLabel: petMood === 'sleep' ? 'The moss ball is asleep. Tap to wake it up' : 'A little moss ball. Tap to say hi', backHint: holes.length === 0 ? '' : 'the holes you punched went all the way through', endHoles: endHoles, backHoles: backHoles, contactRows: contactRows, aboutPhotos: aboutPhotos,
+punchHint: holes.length === 0 ? 'go on, punch a hole' : holes.length + (holes.length === 1 ? ' hole' : ' holes') + ' punched',
+d: isOpen ? projects[st.open] : projects[0],
+showInsert: isOpen, closeProj: closeProj,
+insertAnim: out ? 'insertOut 0.3s ease-in both' : 'insertIn 0.45s cubic-bezier(.2,.8,.2,1) both',
+fadeAnim: out ? 'fadeOut 0.3s ease both' : 'fadeIn 0.35s ease both',
+showCornerR: false, showCornerL: false,
+cornerDownR: cornerDown(1), cornerDownL: cornerDown(-1), cornerMove: cornerMove, cornerUp: cornerUp,
+cornerClickR: cornerClick(1), cornerClickL: cornerClick(-1),
+flipNext: flip === 'next', flipPrev: flip === 'prev',
+flipDur: ((st.dur || 520) / 1000) + 's',
+next: () => go(s + 1), prev: () => go(s - 1),
+atStart: s === 0, atEnd: s === last,
+prevOpacity: s === 0 ? 0.35 : 1, nextOpacity: s === last ? 0.35 : 1,
+pageLabel: sections[shown].label + ' · ' + sections[shown].pages
+};
+}
+}
+render(html`<${Component} ...${{"palette": "original", "pencil": true, "nameStyle": "bubble", "nameColor": "burgundy", "desk": "walnut"}} />`, document.getElementById('app'));
+})();
+</script>
+</body>
+</html>

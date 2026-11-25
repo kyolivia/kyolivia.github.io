@@ -74,6 +74,18 @@ a{color:inherit}a:hover{opacity:.75}
 @media (hover:hover) and (pointer:fine){.pencil-on,.pencil-on *{cursor:none !important}}
 @media (max-width:820px){.tabs{position:static;flex-direction:row;flex-wrap:wrap;margin-bottom:10px}.tab{width:auto;height:44px;padding:0 16px}.tabrot{transform:none !important}}
 @media (prefers-reduced-motion: reduce){.pet-popin,.pet-shake{animation:none !important}.pet-img,.pet-z{animation:none !important}.cv-pet{transition:none}.flip{display:none}.tab,.lift,.curl,.stain{transition:none}.pop,.popshadow{animation:none !important}}
+
+/* ---- phone layout ---- */
+@media (max-width:820px){
+.tabs{flex-wrap:nowrap !important;gap:0 !important;justify-content:space-between;align-items:flex-end;width:100%;margin:0 0 14px 0 !important}
+.tab{flex:0 1 auto;min-width:0;padding:0 2px !important;height:40px !important}
+.tab img{height:min(24px,calc(5.3vw - 3.5px)) !important;width:auto;max-width:100%}
+.tab span.tabrot{font-size:min(15px,calc(3.4vw + 1px)) !important}
+.contact-grid{grid-template-columns:1fr !important;gap:16px !important}
+.contact-grid>a{transform:none !important}
+.contact-grid>a>span:last-child{overflow-wrap:anywhere}
+.cv-label,.cv-find{align-self:flex-start !important;padding-left:0 !important}
+}
 </style>
 <style>html,body{margin:0;padding:0}html{background:#CFC5B7}</style>
 </head>
@@ -101,7 +113,7 @@ ${(tabs || []).map((t) => html`
 `)}
 </nav>
 
-<div style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; min-height: 700px">
+<div style="position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 28px; min-height: 700px">
 
 
 ${(s0) ? html`
@@ -253,7 +265,7 @@ ${(s3) ? html`
 <p style="margin: 0; font-size: 18px; line-height: 1.5; max-width: 380px">Say hi! I’m always up for a good chat :)</p>
 <div style="display: flex; flex-direction: column; gap: 4px">
 <h3 style="margin: 0 0 8px"><img src="assets/handwriting/find-me.png" alt="find me!" style="display: block; height: 32px; width: auto; max-width: 100%; object-fit: contain; object-position: left center;; align-self: flex-start; flex: none" /></h3>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; padding-top: 10px">
+<div class="contact-grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; padding-top: 10px">
 ${(contactRows || []).map((t) => html`
 <a href="${t.href}" class="lift" style="display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: ${c.ink}; transform: rotate(${t.tilt}deg)">
 <span style="display: flex; align-items: center; gap: 12px; min-height: 44px">
@@ -606,7 +618,7 @@ flipT: flipped['e' + i] ? 'rotateY(180deg)' : 'rotateY(0deg)',
 flippedStr: flipped['e' + i] ? 'true' : 'false',
 active: i === expIdx, selStr: i === expIdx ? 'true' : 'false',
 bg: i === expIdx ? 'rgba(0,0,0,0.04)' : 'transparent',
-pick: () => this.setState({ exp: i })
+pick: () => { this.setState({ exp: i }); if (typeof matchMedia === 'function' && matchMedia('(max-width:820px)').matches) { setTimeout(() => { const p = document.querySelector('[role="tabpanel"]'); if (p && p.scrollIntoView) p.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 90); } }
 }));
 const experiences = projects;
 const sections = [
